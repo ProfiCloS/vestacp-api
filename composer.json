@@ -2,7 +2,8 @@
     "name": "proficlos/vestacp-api",
     "description": "VestaCP PHP API",
     "require": {
-        "php": ">=7.1"
+        "php": ">=7.1",
+        "guzzlehttp/guzzle": "^6.3@dev"
     },
     "homepage": "https://github.com/ProfiCloS/vestacp-api",
     "license": "MIT",
@@ -17,6 +18,12 @@
         "classmap": ["src/"]
     },
     "require-dev": {
-        "roave/security-advisories": "dev-master"
+        "roave/security-advisories": "dev-master",
+        "phpunit/phpunit": "7.5.x-dev"
+    },
+    "config": {
+        "platform": {
+            "php": "7.1"
+        }
     }
 }

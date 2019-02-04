@@ -1,0 +1,28 @@
+<?php
+
+use ProfiCloS\VestaCP\Authorization\Credentials;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+class credentialTest extends \PHPUnit\Framework\TestCase
+{
+
+	public function testUser()
+	{
+		$credentials = new Credentials('', '');
+		$this->assertSame('', $credentials->getUser());
+
+		$credentials->setUser('test');
+		$this->assertSame('test', $credentials->getUser());
+	}
+
+	public function testPassword()
+	{
+		$credentials = new Credentials('', '');
+		$this->assertSame('', $credentials->getPassword());
+
+		$credentials->setPassword('test');
+		$this->assertSame('test', $credentials->getPassword());
+	}
+
+}
