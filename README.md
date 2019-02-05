@@ -1,6 +1,6 @@
 [![GitHub version](https://badge.fury.io/gh/ProfiCloS%2Fvestacp-api.svg)](https://badge.fury.io/gh/ProfiCloS%2Fvestacp-api)
 [![Build Status](https://travis-ci.com/ProfiCloS/vestacp-api.svg?branch=master)](https://travis-ci.com/ProfiCloS/vestacp-api)
-[![codecov.io](https://codecov.io/github/ProfiCloS/vestacp-api/coverage.svg?branch=master)](https://codecov.io/github/ProfiCloS/vestacp-api?branch=master)
+[![codecov](https://codecov.io/gh/ProfiCloS/vestacp-api/branch/master/graph/badge.svg)](https://codecov.io/gh/ProfiCloS/vestacp-api)
 
 # VestaCP PHP API
 
