@@ -10,7 +10,26 @@ $ composer require proficlos/vestacp-api
 ```
 
 # How to use
+## Create Client
 
+Easy way
+```php
+use ProfiCloS\VestaCP\Client;
+
+// easy way to create Client
+$client = Client::simpleFactory('someHost', 'someUser', 'somePass');
+```
+
+For some reasons (more hosts, etc) you may need create objects alone
+```php
+use ProfiCloS\VestaCP\Client;
+use ProfiCloS\VestaCP\Authorization\Credentials;
+use ProfiCloS\VestaCP\Authorization\Host;
+
+$credentials = new Credentials('someUser', 'somePassword');
+$host = new Host('someHost', $credentials);
+$client = new Client($host);
+```
 
 # Buy us a coffee <3
 [![Buy me a Coffee](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E8NK53NGKVDHS)
