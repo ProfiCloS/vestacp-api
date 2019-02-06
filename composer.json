@@ -19,7 +19,8 @@
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
-        "phpunit/phpunit": "7.5.x-dev"
+        "phpunit/phpunit": "7.5.x-dev",
+        "tracy/tracy": "^3.0@dev"
     },
     "config": {
         "platform": {

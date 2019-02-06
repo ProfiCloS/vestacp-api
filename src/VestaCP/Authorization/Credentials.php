@@ -38,4 +38,12 @@ class Credentials
 		return $this->password;
 	}
 
+	public function getRequestParams(): array
+	{
+		return [
+			'user' => $this->getUser(),
+			'password' => $this->getPassword()
+		];
+	}
+
 }

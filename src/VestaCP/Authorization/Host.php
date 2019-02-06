@@ -53,4 +53,9 @@ class Host
 		return $this->port;
 	}
 
+	public function buildUri(): string
+	{
+		return $this->getHostname() . ':' . $this->getPort() . '/api/';
+	}
+
 }

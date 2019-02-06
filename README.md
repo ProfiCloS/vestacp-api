@@ -30,9 +30,26 @@
 	$credentials = new Credentials('someUser', 'somePassword');
 	$host = new Host('someHost', $credentials);
 	$client = new Client($host);
-
+	```
 3) Usage
+	```php
+	use ProfiCloS\VestaCP\Client;
 
+	$client = Client::simpleFactory('someHost', 'someUser', 'somePass');
+	
+	// example - verify login
+	$client->testAuthorization(); // bool
+
+	// example - list users
+	$client->getModuleUser()->list(); // todo
+
+	// modules
+	$client->getModuleUser(); // todo
+	$client->getModuleWeb(); // todo
+	$client->getModuleDb(); // todo
+	$client->getModuleCron(); // todo
+	$client->getModuleBackup(); // todo
+	```
 	...
 
 
