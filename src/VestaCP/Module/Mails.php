@@ -3,6 +3,8 @@ namespace ProfiCloS\VestaCP\Module;
 
 use Nette\Utils\ArrayHash;
 use ProfiCloS\VestaCP\Command\Lists\MailAccounts;
+use ProfiCloS\VestaCP\Command\Lists\MailDomainDkim;
+use ProfiCloS\VestaCP\Command\Lists\MailDomainDkimDns;
 use ProfiCloS\VestaCP\Command\Lists\MailDomains;
 
 class Mails extends Module
@@ -18,6 +20,30 @@ class Mails extends Module
 	public function listAccounts(string $user, string $domain): array
 	{
 		return $this->client->send(new MailAccounts($user, $domain));
+	}
+
+	/**
+	 * @param string $user
+	 * @param string $domain
+	 * @return ArrayHash[]
+	 * @throws \ProfiCloS\VestaCP\ClientException
+	 * @throws \ProfiCloS\VestaCP\ProcessException
+	 */
+	public function listDomainDkim(string $user, string $domain): array
+	{
+		return $this->client->send(new MailDomainDkim($user, $domain));
+	}
+
+	/**
+	 * @param string $user
+	 * @param string $domain
+	 * @return ArrayHash[]
+	 * @throws \ProfiCloS\VestaCP\ClientException
+	 * @throws \ProfiCloS\VestaCP\ProcessException
+	 */
+	public function listDomainDkimDns(string $user, string $domain): array
+	{
+		return $this->client->send(new MailDomainDkimDns($user, $domain));
 	}
 
 	/**
