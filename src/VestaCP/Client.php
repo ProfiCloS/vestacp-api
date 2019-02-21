@@ -5,6 +5,7 @@ use ProfiCloS\VestaCP\Authorization\Credentials;
 use ProfiCloS\VestaCP\Authorization\Host;
 use ProfiCloS\VestaCP\Command\ICommand;
 use ProfiCloS\VestaCP\Command\TestAuthorization;
+use ProfiCloS\VestaCP\Module\Mails;
 use ProfiCloS\VestaCP\Module\Users;
 
 class Client
@@ -130,6 +131,11 @@ class Client
 	public function getModuleUser(): Users
 	{
 		return $this->loadModule(Users::class);
+	}
+
+	public function getModuleMail(): Mails
+	{
+		return $this->loadModule(Mails::class);
 	}
 
 }

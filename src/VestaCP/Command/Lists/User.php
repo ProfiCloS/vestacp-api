@@ -2,13 +2,8 @@
 namespace ProfiCloS\VestaCP\Command\Lists;
 
 use Nette\Utils\ArrayHash;
-use Nette\Utils\Json;
-use Nette\Utils\JsonException;
-use ProfiCloS\VestaCP\AuthorizationException;
-use ProfiCloS\VestaCP\Command\Command;
-use ProfiCloS\VestaCP\ProcessException;
 
-class User extends Command
+class User extends ListCommand
 {
 
 	/** @var string */
@@ -24,34 +19,9 @@ class User extends Command
 		return 'v-list-user';
 	}
 
-	public function needReturnCode(): bool
-	{
-		return false;
-	}
-
-	/**
-	 * @return array
-	 * @throws ProcessException
-	 * @throws AuthorizationException
-	 */
 	public function process(): ArrayHash
 	{
-		parent::defaultProcess();
-
-		$responseJson = $this->getResponseText();
-		try {
-			$response = Json::decode( $responseJson );
-		} catch ( JsonException $e ) {
-			throw new ProcessException($responseJson);
-		}
-
-		// convert response to array
-		return $this->processResponse((array)$response);
-	}
-
-	private function processResponse(array $users): ArrayHash
-	{
-		return ArrayHash::from((array) array_shift($users));
+		return $this->convertDetail( parent::process() );
 	}
 
 	public function getRequestParams(): array

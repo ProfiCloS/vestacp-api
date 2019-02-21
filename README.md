@@ -45,9 +45,15 @@
 	$userModule->list(); // returns all users with data
 	$userModule->detail('admin'); // returns selected user with data
 
+	// example - mail module
+	$mailModule = $client->getModuleMail();
+	$mailModule->listDomains('admin'); // returns mail domains from selected user
+	$mailModule->listAccounts('admin', 'domain.com'); // returns accounts from selected user and domain
+
 	// modules
 	$client->getModuleUser();
 	$client->getModuleWeb(); // todo
+	$client->getModuleMail();
 	$client->getModuleDb(); // todo
 	$client->getModuleCron(); // todo
 	$client->getModuleBackup(); // todo
