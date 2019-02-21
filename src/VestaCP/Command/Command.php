@@ -4,6 +4,7 @@ namespace ProfiCloS\VestaCP\Command;
 use GuzzleHttp\Exception\ClientException;
 use ProfiCloS\VestaCP\AuthorizationException;
 use ProfiCloS\VestaCP\InvalidResponseException;
+use ProfiCloS\VestaCP\ProcessException;
 use Psr\Http\Message\ResponseInterface;
 
 abstract class Command implements ICommand
@@ -61,6 +62,15 @@ abstract class Command implements ICommand
 		if($responseText === 'Error: authentication failed') {
 			throw new AuthorizationException('Authorization failed! Bad user or password');
 		}
+	}
+
+	/**
+	 * @param $code
+	 * @throws ProcessException
+	 */
+	protected function throwCodeException($code): void
+	{
+		throw new ProcessException(ResponseCode::$messages[$code]);
 	}
 
 }

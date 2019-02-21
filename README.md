@@ -51,6 +51,8 @@
 	$mailModule->listAccounts('admin', 'domain.com'); // returns accounts from selected user and domain
 	$mailModule->listDomainDkim('admin', 'domain.com'); 
 	$mailModule->listDomainDkimDns('admin', 'domain.com');
+	$mailModule->addAccount('admin', 'domain.com', 'info', 'pa$$word'); // add info@domain.com account
+	$mailModule->deleteAccount('admin', 'domain.com', 'info');
 
 	// modules
 	$client->getModuleUser();

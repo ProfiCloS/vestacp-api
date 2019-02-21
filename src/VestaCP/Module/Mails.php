@@ -2,6 +2,8 @@
 namespace ProfiCloS\VestaCP\Module;
 
 use Nette\Utils\ArrayHash;
+use ProfiCloS\VestaCP\Command\Add\MailAccount;
+use ProfiCloS\VestaCP\Command\Delete\MailAccount as DeleteMailAccount;
 use ProfiCloS\VestaCP\Command\Lists\MailAccounts;
 use ProfiCloS\VestaCP\Command\Lists\MailDomainDkim;
 use ProfiCloS\VestaCP\Command\Lists\MailDomainDkimDns;
@@ -20,6 +22,33 @@ class Mails extends Module
 	public function listAccounts(string $user, string $domain): array
 	{
 		return $this->client->send(new MailAccounts($user, $domain));
+	}
+
+	/**
+	 * @param string $user
+	 * @param string $domain
+	 * @param string $account
+	 * @param string $password
+	 * @return bool
+	 * @throws \ProfiCloS\VestaCP\ClientException
+	 * @throws \ProfiCloS\VestaCP\ProcessException
+	 */
+	public function addAccount(string $user, string $domain, string $account, string $password): bool
+	{
+		return $this->client->send(new MailAccount($user, $domain, $account, $password));
+	}
+
+	/**
+	 * @param string $user
+	 * @param string $domain
+	 * @param string $account
+	 * @return bool
+	 * @throws \ProfiCloS\VestaCP\ClientException
+	 * @throws \ProfiCloS\VestaCP\ProcessException
+	 */
+	public function deleteAccount(string $user, string $domain, string $account): bool
+	{
+		return $this->client->send(new DeleteMailAccount($user, $domain, $account));
 	}
 
 	/**
