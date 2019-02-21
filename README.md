@@ -49,14 +49,14 @@
 	$userModule->delete('other_user');
 	
 	// example - mail module
-	$mailModule = $client->getModuleMail();
-	$mailModule->listDomains('admin'); // returns mail domains from selected user
-	$mailModule->listAccounts('admin', 'domain.com'); // returns accounts from selected user and domain
-	$mailModule->listDomainDkim('admin', 'domain.com'); 
-	$mailModule->listDomainDkimDns('admin', 'domain.com');
-	$mailModule->addAccount('admin', 'domain.com', 'info', 'pa$$word'); // add info@domain.com account
-	$mailModule->changeAccountPassword('admin', 'domain.com', 'info', 'otherPa$$word'); // change info@domain.com password
-	$mailModule->deleteAccount('admin', 'domain.com', 'info');
+	$mailModule = $client->getModuleMail('admin'); // mail module needs user
+	$mailModule->listDomains(); // returns mail domains from selected user
+	$mailModule->listAccounts('domain.com'); // returns accounts from selected user and domain
+	$mailModule->listDomainDkim('domain.com'); 
+	$mailModule->listDomainDkimDns('domain.com');
+	$mailModule->addAccount('domain.com', 'info', 'pa$$word'); // add info@domain.com account
+	$mailModule->changeAccountPassword('domain.com', 'info', 'otherPa$$word'); // change info@domain.com password
+	$mailModule->deleteAccount('domain.com', 'info');
 
 	// modules
 	$client->getModuleUser();

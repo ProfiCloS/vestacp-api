@@ -119,10 +119,14 @@ class Client
 		return $this;
 	}
 
-	private function loadModule($moduleName)
+	private function loadModule($moduleName, $param = null)
 	{
 		if(!isset($this->modules[$moduleName])) {
-			$this->modules[$moduleName] = new $moduleName($this);
+			if($param !== null) {
+				$this->modules[$moduleName] = new $moduleName($this, $param);
+			} else {
+				$this->modules[$moduleName] = new $moduleName($this);
+			}
 		}
 
 		return $this->modules[$moduleName];
@@ -133,9 +137,9 @@ class Client
 		return $this->loadModule(Users::class);
 	}
 
-	public function getModuleMail(): Mails
+	public function getModuleMail(string $user): Mails
 	{
-		return $this->loadModule(Mails::class);
+		return $this->loadModule(Mails::class, $user);
 	}
 
 }
