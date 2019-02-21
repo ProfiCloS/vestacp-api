@@ -3,6 +3,7 @@ namespace ProfiCloS\VestaCP\Module;
 
 use Nette\Utils\ArrayHash;
 use ProfiCloS\VestaCP\Command\Add\MailAccount;
+use ProfiCloS\VestaCP\Command\Change\MailAccountPassword;
 use ProfiCloS\VestaCP\Command\Delete\MailAccount as DeleteMailAccount;
 use ProfiCloS\VestaCP\Command\Lists\MailAccounts;
 use ProfiCloS\VestaCP\Command\Lists\MailDomainDkim;
@@ -36,6 +37,20 @@ class Mails extends Module
 	public function addAccount(string $user, string $domain, string $account, string $password): bool
 	{
 		return $this->client->send(new MailAccount($user, $domain, $account, $password));
+	}
+
+	/**
+	 * @param string $user
+	 * @param string $domain
+	 * @param string $account
+	 * @param string $password
+	 * @return bool
+	 * @throws \ProfiCloS\VestaCP\ClientException
+	 * @throws \ProfiCloS\VestaCP\ProcessException
+	 */
+	public function changeAccountPassword(string $user, string $domain, string $account, string $password): bool
+	{
+		return $this->client->send(new MailAccountPassword($user, $domain, $account, $password));
 	}
 
 	/**

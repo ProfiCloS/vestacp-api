@@ -44,7 +44,10 @@
 	$userModule = $client->getModuleUser();
 	$userModule->list(); // returns all users with data
 	$userModule->detail('admin'); // returns selected user with data
-
+	$userModule->changePassword('admin', 'otherPa$$word');
+	$userModule->add('other_user', 'pa$$word', 'some@email.com');
+	$userModule->delete('other_user');
+	
 	// example - mail module
 	$mailModule = $client->getModuleMail();
 	$mailModule->listDomains('admin'); // returns mail domains from selected user
@@ -52,6 +55,7 @@
 	$mailModule->listDomainDkim('admin', 'domain.com'); 
 	$mailModule->listDomainDkimDns('admin', 'domain.com');
 	$mailModule->addAccount('admin', 'domain.com', 'info', 'pa$$word'); // add info@domain.com account
+	$mailModule->changeAccountPassword('admin', 'domain.com', 'info', 'otherPa$$word'); // change info@domain.com password
 	$mailModule->deleteAccount('admin', 'domain.com', 'info');
 
 	// modules
