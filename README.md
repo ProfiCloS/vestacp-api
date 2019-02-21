@@ -18,7 +18,7 @@
 	use ProfiCloS\VestaCP\Client;
 	
 	// easy way to create Client
-	$client = Client::simpleFactory('someHost', 'someUser', 'somePass');
+	$client = Client::simpleFactory('https://someHost', 'someUser', 'somePass');
 	```
 	
 	b) For some reasons (more hosts, etc) you may need create objects alone
@@ -28,14 +28,14 @@
 	use ProfiCloS\VestaCP\Authorization\Host;
 	
 	$credentials = new Credentials('someUser', 'somePassword');
-	$host = new Host('someHost', $credentials);
+	$host = new Host('https://someHost', $credentials);
 	$client = new Client($host);
 	```
 3) Usage
 	```php
 	use ProfiCloS\VestaCP\Client;
 
-	$client = Client::simpleFactory('someHost', 'someUser', 'somePass');
+	$client = Client::simpleFactory('https://someHost', 'someUser', 'somePass');
 	
 	// example - verify login
 	$client->testAuthorization(); // bool
