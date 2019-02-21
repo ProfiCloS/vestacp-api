@@ -61,7 +61,7 @@
 	// modules
 	$client->getModuleUser();
 	$client->getModuleWeb(); // todo
-	$client->getModuleMail();
+	$client->getModuleMail('user');
 	$client->getModuleDb(); // todo
 	$client->getModuleCron(); // todo
 	$client->getModuleBackup(); // todo
