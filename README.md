@@ -51,12 +51,14 @@
 	// example - mail module
 	$mailModule = $client->getModuleMail('admin'); // mail module needs user
 	$mailModule->listDomains(); // returns mail domains from selected user
+	$mailModule->addDomain('domain.com'); // add domain
 	$mailModule->listAccounts('domain.com'); // returns accounts from selected user and domain
 	$mailModule->listDomainDkim('domain.com'); 
 	$mailModule->listDomainDkimDns('domain.com');
 	$mailModule->addAccount('domain.com', 'info', 'pa$$word'); // add info@domain.com account
 	$mailModule->changeAccountPassword('domain.com', 'info', 'otherPa$$word'); // change info@domain.com password
 	$mailModule->deleteAccount('domain.com', 'info');
+	$mailModule->deleteDomain('domain.com');
 
 	// modules
 	$client->getModuleUser();

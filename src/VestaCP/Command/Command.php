@@ -73,4 +73,12 @@ abstract class Command implements ICommand
 		throw new ProcessException(ResponseCode::$messages[$code]);
 	}
 
+	/**
+	 * @param bool $bool
+	 * @return string
+	 */
+	protected function convertBool(bool $bool): string {
+		return $bool === true ? 'yes' : 'no';
+	}
+
 }
