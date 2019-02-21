@@ -49,6 +49,8 @@
 	$mailModule = $client->getModuleMail();
 	$mailModule->listDomains('admin'); // returns mail domains from selected user
 	$mailModule->listAccounts('admin', 'domain.com'); // returns accounts from selected user and domain
+	$mailModule->listDomainDkim('admin', 'domain.com'); 
+	$mailModule->listDomainDkimDns('admin', 'domain.com');
 
 	// modules
 	$client->getModuleUser();
