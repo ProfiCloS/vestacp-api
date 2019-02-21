@@ -3,7 +3,8 @@
     "description": "VestaCP PHP API",
     "require": {
         "php": ">=7.1",
-        "guzzlehttp/guzzle": "^6.3@dev"
+        "guzzlehttp/guzzle": "^6.3@dev",
+        "nette/utils": "^3.0@dev"
     },
     "homepage": "https://github.com/ProfiCloS/vestacp-api",
     "license": "MIT",

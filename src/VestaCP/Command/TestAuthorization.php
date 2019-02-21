@@ -35,7 +35,7 @@ class TestAuthorization extends Command
 			return true;
 		}
 
-		throw new InvalidResponseException('Invalid Response. Is hostn really VestaCP?');
+		throw new InvalidResponseException('Invalid Response. Is host really VestaCP?');
 	}
 
 	public function getRequestParams(): array

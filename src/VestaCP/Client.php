@@ -5,6 +5,7 @@ use ProfiCloS\VestaCP\Authorization\Credentials;
 use ProfiCloS\VestaCP\Authorization\Host;
 use ProfiCloS\VestaCP\Command\ICommand;
 use ProfiCloS\VestaCP\Command\TestAuthorization;
+use ProfiCloS\VestaCP\Module\Users;
 
 class Client
 {
@@ -14,6 +15,9 @@ class Client
 
 	/** @var \GuzzleHttp\Client */
 	private $guzzleClient;
+
+	/** @var array */
+	private $modules = [];
 
 	/**
 	 * Client constructor.
@@ -112,6 +116,20 @@ class Client
 		}
 
 		return $this;
+	}
+
+	private function loadModule($moduleName)
+	{
+		if(!isset($this->modules[$moduleName])) {
+			$this->modules[$moduleName] = new $moduleName($this);
+		}
+
+		return $this->modules[$moduleName];
+	}
+
+	public function getModuleUser(): Users
+	{
+		return $this->loadModule(Users::class);
 	}
 
 }

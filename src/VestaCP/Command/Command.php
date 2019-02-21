@@ -9,6 +9,15 @@ use Psr\Http\Message\ResponseInterface;
 abstract class Command implements ICommand
 {
 
+	protected const ARG_1 = 'arg1';
+	protected const ARG_2 = 'arg2';
+	protected const ARG_3 = 'arg3';
+	protected const ARG_4 = 'arg4';
+	protected const ARG_5 = 'arg5';
+	protected const ARG_6 = 'arg6';
+
+	protected const FORMAT_JSON = 'json';
+
 	private $lastResponse;
 
 	public function processException(ClientException $exception)

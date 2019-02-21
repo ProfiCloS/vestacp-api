@@ -40,11 +40,13 @@
 	// example - verify login
 	$client->testAuthorization(); // bool
 
-	// example - list users
-	$client->getModuleUser()->list(); // todo
+	// example - user module
+	$userModule = $client->getModuleUser();
+	$userModule->list(); // returns all users with data
+	$userModule->detail('admin'); // returns selected user with data
 
 	// modules
-	$client->getModuleUser(); // todo
+	$client->getModuleUser();
 	$client->getModuleWeb(); // todo
 	$client->getModuleDb(); // todo
 	$client->getModuleCron(); // todo
