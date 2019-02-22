@@ -1,6 +1,7 @@
 <?php
 namespace ProfiCloS\VestaCP\Command\Lists;
 
+use ProfiCloS\VestaCP\Command\ListCommand;
 
 class MailDomains extends ListCommand
 {

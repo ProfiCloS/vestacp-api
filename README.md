@@ -33,23 +33,45 @@
 	```
 3) Usage
 	```php
-	use ProfiCloS\VestaCP\Client;
-
-	$client = Client::simpleFactory('https://someHost', 'someUser', 'somePass');
-	
-	// example - verify login
+	// verify login
 	$client->testAuthorization(); // bool
+	```
+	You can simply send one of prepared commands (or you can write own command - must implements `\ProfiCloS\VestaCP\Command\ICommand` )
+	```php
+	$command = new SomeCommand(); 
+	$response = $client->send( $command );
 
-	// example - user module
+	echo $response->getResponseText();
+	```
+	Or you can use prepared modules
+	
+	a) user module
+	
+	```php
 	$userModule = $client->getModuleUser();
+
 	$userModule->list(); // returns all users with data
 	$userModule->detail('admin'); // returns selected user with data
 	$userModule->changePassword('admin', 'otherPa$$word');
 	$userModule->add('other_user', 'pa$$word', 'some@email.com');
 	$userModule->delete('other_user');
+	// ... etc
+	```
 	
-	// example - mail module
+	b) web module
+
+	```php
+	$webModule = $client->getModuleWeb();
+
+	// todo
+	// ... etc
+	```
+	
+	c) mail module
+
+	```php
 	$mailModule = $client->getModuleMail('admin'); // mail module needs user
+
 	$mailModule->listDomains(); // returns mail domains from selected user
 	$mailModule->addDomain('domain.com'); // add domain
 	$mailModule->listAccounts('domain.com'); // returns accounts from selected user and domain
@@ -59,16 +81,36 @@
 	$mailModule->changeAccountPassword('domain.com', 'info', 'otherPa$$word'); // change info@domain.com password
 	$mailModule->deleteAccount('domain.com', 'info');
 	$mailModule->deleteDomain('domain.com');
-
-	// modules
-	$client->getModuleUser();
-	$client->getModuleWeb(); // todo
-	$client->getModuleMail('user');
-	$client->getModuleDb(); // todo
-	$client->getModuleCron(); // todo
-	$client->getModuleBackup(); // todo
+	// ... etc
 	```
-	...
+	
+	d) db module
+
+	```php
+	// modules
+	$dbModule = $client->getModuleDb(); 
+
+	// todo
+	// ... etc
+	```
+	
+	e) cron module
+
+	```php
+	$cronModule = $client->getModuleCron(); 
+
+	// todo
+	// ... etc
+	```
+	
+	f) backup module
+
+	```php
+	$backupModule = $client->getModuleBackup(); 
+
+	// todo
+	// ... etc
+	```
 
 
 ## Buy us a coffee <3

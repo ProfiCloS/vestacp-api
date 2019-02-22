@@ -2,6 +2,7 @@
 namespace ProfiCloS\VestaCP\Command\Lists;
 
 use Nette\Utils\ArrayHash;
+use ProfiCloS\VestaCP\Command\ListCommand;
 
 class User extends ListCommand
 {

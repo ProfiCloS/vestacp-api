@@ -1,6 +1,8 @@
 <?php
 namespace ProfiCloS\VestaCP\Command\Lists;
 
+use ProfiCloS\VestaCP\Command\ListCommand;
+
 class MailDomainDkim extends ListCommand
 {
 

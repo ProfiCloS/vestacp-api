@@ -1,11 +1,10 @@
 <?php
-namespace ProfiCloS\VestaCP\Command\Lists;
+namespace ProfiCloS\VestaCP\Command;
 
 use Nette\Utils\ArrayHash;
 use Nette\Utils\Json;
 use Nette\Utils\JsonException;
 use ProfiCloS\VestaCP\AuthorizationException;
-use ProfiCloS\VestaCP\Command\Command;
 use ProfiCloS\VestaCP\ProcessException;
 
 abstract class ListCommand extends Command
