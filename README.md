@@ -61,9 +61,15 @@
 	b) web module
 
 	```php
-	$webModule = $client->getModuleWeb();
+	$webModule = $client->getModuleWeb('admin'); // web module needs user
 
-	// todo
+	$webModule->listDomains();
+	$webModule->addDomain('domain.com');
+	$webModule->addDomainFtp('domain.com', 'test', 'pa$$word');
+	$webModule->changeDomainFtpPassword('domain.com', 'admin_test', 'otherPa$$word');
+	$webModule->changeDomainFtpPath('domain.com', 'admin_test', 'path/other');
+	$webModule->deleteDomainFtp('domain.com', 'admin_test');
+	$webModule->deleteDomain('domain.com');
 	// ... etc
 	```
 	
