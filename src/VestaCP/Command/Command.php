@@ -21,10 +21,13 @@ abstract class Command implements ICommand
 
 	private $lastResponse;
 
-	public function processException(ClientException $exception)
+	/**
+	 * @param ClientException $exception
+	 * @throws ProcessException
+	 */
+	public function processException(ClientException $exception): void
 	{
-		var_dump($exception->getMessage());
-		die;
+		throw new ProcessException($exception->getMessage());
 	}
 
 	public function setLastResponse(ResponseInterface $response): void
@@ -32,7 +35,7 @@ abstract class Command implements ICommand
 		$this->lastResponse = $response->getBody()->getContents();
 	}
 
-	public function getResponseText(): string
+	public function getResponseText(): ?string
 	{
 		return $this->lastResponse;
 	}

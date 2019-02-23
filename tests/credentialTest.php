@@ -25,4 +25,10 @@ class credentialTest extends \PHPUnit\Framework\TestCase
 		$this->assertSame('test', $credentials->getPassword());
 	}
 
+	public function testParams()
+	{
+		$credentials = new Credentials('us', 'er');
+		$this->assertSame(['user' => 'us', 'password' => 'er'], $credentials->getRequestParams());
+	}
+
 }

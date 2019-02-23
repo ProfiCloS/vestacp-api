@@ -19,6 +19,14 @@ class hostTest extends \PHPUnit\Framework\TestCase
 		$this->assertSame('host', $host->getHostname());
 	}
 
+	public function testUri()
+	{
+		$credentials = new Credentials('', '');
+		$host = new Host('https://vesta', $credentials);
+
+		$this->assertSame('https://vesta:8083/api/', $host->buildUri());
+	}
+
 	public function testPort()
 	{
 		$credentials = new Credentials('', '');
