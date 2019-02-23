@@ -10,6 +10,8 @@ class commandTest extends \PHPUnit\Framework\TestCase
 		$this->assertSame('', $command->getName());
 		$this->assertSame([], $command->getRequestParams());
 
+		$this->assertTrue($command->needReturnCode());
+
 		$this->expectException(\ProfiCloS\VestaCP\InvalidResponseException::class);
 		$command->process();
 
