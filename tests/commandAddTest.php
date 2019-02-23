@@ -11,6 +11,9 @@ class commandAddTest extends \PHPUnit\Framework\TestCase
 		$this->assertSame(['arg1' => 'admin', 'arg2' => 'pass', 'arg3' => 'mail@domain.com'], $command->getRequestParams());
 
 		$this->assertTrue($command->needReturnCode());
+
+		$this->expectException(\ProfiCloS\VestaCP\InvalidResponseException::class);
+		$command->process();
 	}
 
 	public function testWebDomain(): void
