@@ -3,10 +3,12 @@ namespace ProfiCloS\VestaCP\Module;
 
 use Nette\Utils\ArrayHash;
 use ProfiCloS\VestaCP\Client;
+use ProfiCloS\VestaCP\Command\Add\LetsEncryptDomain;
 use ProfiCloS\VestaCP\Command\Add\WebDomain;
 use ProfiCloS\VestaCP\Command\Add\WebDomainFtp;
 use ProfiCloS\VestaCP\Command\Change\WebDomainFtpPassword;
 use ProfiCloS\VestaCP\Command\Change\WebDomainFtpPath;
+use ProfiCloS\VestaCP\Command\Delete\LetsEncryptDomain as DeleteLetsEncryptDomain;
 use ProfiCloS\VestaCP\Command\Delete\WebDomain as DeleteWebDomain;
 use ProfiCloS\VestaCP\Command\Delete\WebDomainFtp as DeleteWebDomainFtpAlias;
 use ProfiCloS\VestaCP\Command\Lists\WebDomains;
@@ -47,6 +49,31 @@ class Webs extends Module
 	public function deleteDomain(string $domain): bool
 	{
 		return $this->client->send(new DeleteWebDomain($this->user, $domain));
+	}
+
+	/**
+	 * @param string      $domain
+	 * @param string|null $aliases
+	 * @param bool        $restart
+	 * @return bool
+	 * @throws \ProfiCloS\VestaCP\ClientException
+	 * @throws \ProfiCloS\VestaCP\ProcessException
+	 */
+	public function addDomainLetsEncrypt(string $domain, string $aliases = null, bool $restart = false): bool
+	{
+		return $this->client->send(new LetsEncryptDomain($this->user, $domain, $aliases, $restart));
+	}
+
+	/**
+	 * @param string $domain
+	 * @param bool   $restart
+	 * @return bool
+	 * @throws \ProfiCloS\VestaCP\ClientException
+	 * @throws \ProfiCloS\VestaCP\ProcessException
+	 */
+	public function deleteDomainLetsEncrypt(string $domain, bool $restart = false): bool
+	{
+		return $this->client->send(new DeleteLetsEncryptDomain($this->user, $domain, $restart));
 	}
 
 	/**

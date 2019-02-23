@@ -65,6 +65,8 @@
 
 	$webModule->listDomains();
 	$webModule->addDomain('domain.com');
+	$webModule->addDomainLetsEncrypt('domain.com', 'www.domain.com'); // needs longer timeout
+	$webModule->deleteDomainLetsEncrypt('domain.com');
 	$webModule->addDomainFtp('domain.com', 'test', 'pa$$word');
 	$webModule->changeDomainFtpPassword('domain.com', 'admin_test', 'otherPa$$word');
 	$webModule->changeDomainFtpPath('domain.com', 'admin_test', 'path/other');

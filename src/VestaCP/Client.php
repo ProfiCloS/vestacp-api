@@ -111,7 +111,7 @@ class Client
 	{
 		try {
 			$this->guzzleClient = new \GuzzleHttp\Client([
-				'timeout' => $options['timeout'] ?? 5.0
+				'timeout' => $options['timeout'] ?? 10.0
 			]);
 		} catch (\Exception $e) {
 			throw new ClientException('Bad Client configuration (' . $e->getMessage() . ')');
