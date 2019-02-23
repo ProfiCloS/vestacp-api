@@ -9,7 +9,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 class clientTest extends \PHPUnit\Framework\TestCase
 {
 
-	public function testHost()
+	public function testHost(): void
 	{
 		$credentials = new Credentials('', '');
 		$host = new Host('', $credentials);
@@ -23,7 +23,7 @@ class clientTest extends \PHPUnit\Framework\TestCase
 		$this->assertSame($otherHost, $client->getHost());
 	}
 
-	public function testSimpleFactory()
+	public function testSimpleFactory(): void
 	{
 		$client = Client::simpleFactory('someHost', 'someUser', 'somePass');
 
