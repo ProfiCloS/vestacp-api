@@ -9,6 +9,8 @@ class commandDeleteTest extends \PHPUnit\Framework\TestCase
 		$command = new \ProfiCloS\VestaCP\Command\Delete\User('admin');
 		$this->assertSame('v-delete-user', $command->getName());
 		$this->assertSame(['arg1' => 'admin'], $command->getRequestParams());
+
+		$this->assertTrue($command->needReturnCode());
 	}
 
 	public function testWebDomain(): void

@@ -9,6 +9,8 @@ class commandAddTest extends \PHPUnit\Framework\TestCase
 		$command = new \ProfiCloS\VestaCP\Command\Add\User('admin', 'pass', 'mail@domain.com');
 		$this->assertSame('v-add-user', $command->getName());
 		$this->assertSame(['arg1' => 'admin', 'arg2' => 'pass', 'arg3' => 'mail@domain.com'], $command->getRequestParams());
+
+		$this->assertTrue($command->needReturnCode());
 	}
 
 	public function testWebDomain(): void

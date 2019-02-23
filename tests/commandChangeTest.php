@@ -9,6 +9,8 @@ class commandChangeTest extends \PHPUnit\Framework\TestCase
 		$command = new \ProfiCloS\VestaCP\Command\Change\UserPassword('admin', 'pass');
 		$this->assertSame('v-change-user-password', $command->getName());
 		$this->assertSame(['arg1' => 'admin', 'arg2' => 'pass'], $command->getRequestParams());
+
+		$this->assertTrue($command->needReturnCode());
 	}
 
 	public function testMailAccountPassword(): void
