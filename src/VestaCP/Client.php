@@ -3,6 +3,7 @@ namespace ProfiCloS\VestaCP;
 
 use ProfiCloS\VestaCP\Authorization\Credentials;
 use ProfiCloS\VestaCP\Authorization\Host;
+use ProfiCloS\VestaCP\Command\Add\LetsEncryptDomain;
 use ProfiCloS\VestaCP\Command\ICommand;
 use ProfiCloS\VestaCP\Command\TestAuthorization;
 use ProfiCloS\VestaCP\Module\Mails;
@@ -80,6 +81,10 @@ class Client
 	{
 		$host = $this->getHost();
 		try {
+			$timeout = $this->guzzleClient->getConfig('timeout');
+			if($command instanceof LetsEncryptDomain) {
+				$timeout = 90;
+			}
 			$response = $this->guzzleClient->post($host->buildUri(), [
 				'form_params' => array_merge(
 					$host->getCredentials()->getRequestParams(),
@@ -89,7 +94,8 @@ class Client
 						'cmd' => $command->getName()
 					]
 				),
-				'verify' => false
+				'verify' => false,
+				'timeout' => $timeout
 			]);
 			$command->setLastResponse($response);
 			return $command->process();
