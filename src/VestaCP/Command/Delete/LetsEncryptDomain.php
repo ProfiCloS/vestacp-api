@@ -32,7 +32,7 @@ class LetsEncryptDomain extends ProcessCommand
 		return [
 			self::ARG_1 => $this->user,
 			self::ARG_2 => $this->domain,
-			self::ARG_3 => $this->restart
+			self::ARG_3 => $this->convertBool($this->restart)
 		];
 	}
 }
