@@ -27,7 +27,7 @@ class UserPassword extends ProcessCommand
 	{
 		return [
 			self::ARG_1 => $this->user,
-			self::ARG_4 => $this->password
+			self::ARG_2 => $this->password
 		];
 	}
 }
